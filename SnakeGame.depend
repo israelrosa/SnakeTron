@@ -1,0 +1,71 @@
+# depslib dependency file v1.0
+1600127641 source:c:\users\israel\documents\game\snake\snakegame\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<unistd.h>
+	"console.h"
+	"map.h"
+	"snake.h"
+	"apple.h"
+
+1599858570 c:\users\israel\documents\game\snake\snakegame\console.h
+	<stdbool.h>
+
+1599754552 source:c:\users\israel\documents\game\snake\snakegame\console.h
+
+1599845507 source:c:\users\israel\documents\game\snake\snakegame\console.c
+	<windows.h>
+	<direct.h>
+	<stdbool.h>
+	"console.h"
+
+1599789742 source:c:\users\israel\documents\game\snake\snakegame\direction.c
+	<stdio.h>
+	<stdlib.h>
+	"direction.h"
+	"console.h"
+
+1599789758 c:\users\israel\documents\game\snake\snakegame\direction.h
+
+1600124549 c:\users\israel\documents\game\snake\snakegame\snake.h
+	"position.h"
+
+1600127802 source:c:\users\israel\documents\game\snake\snakegame\snake.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"snake.h"
+	"direction.h"
+	"position.h"
+	"console.h"
+
+1600125921 source:c:\users\israel\documents\game\snake\snakegame\apple.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	"apple.h"
+	"position.h"
+	"console.h"
+	"snake.h"
+
+1600124540 c:\users\israel\documents\game\snake\snakegame\apple.h
+	"snake.h"
+
+1599826045 c:\users\israel\documents\game\snake\snakegame\position.h
+
+1599826195 source:c:\users\israel\documents\game\snake\snakegame\position.c
+	<stdio.h>
+	<stdlib.h>
+	"position.h"
+	"console.h"
+
+1599828390 source:c:\users\israel\documents\game\snake\snakegame\map.c
+	<stdio.h>
+	<stdlib.h>
+	"map.h"
+	"console.h"
+
+1599781072 c:\users\israel\documents\game\snake\snakegame\map.h
+
