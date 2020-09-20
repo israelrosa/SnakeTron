@@ -87,3 +87,11 @@ void hideCursor(bool hide){
    info.bVisible = !hide;
    SetConsoleCursorInfo(consoleHandle, &info);
 }
+
+void getSizeWindow(int *width, int *heigth){
+    CONSOLE_SCREEN_BUFFER_INFO cmd;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cmd);
+    *width = cmd.srWindow.Right - cmd.srWindow.Left +1;
+    *heigth = cmd.srWindow.Bottom - cmd.srWindow.Top +1;
+}

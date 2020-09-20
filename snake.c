@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <stdbool.h>
 #include "snake.h"
+#include "apple.h"
 #include "direction.h"
-#include "position.h"
 #include "console.h"
 
 struct snake {
@@ -32,40 +33,37 @@ Snake* createSnake(int xPos, int yPos, int player) {
 }
 
 void printSnake(Snake* snake) {
-    for(Position* tail = snake->tail; getProxPos(tail) != NULL; tail = getProxPos(tail)) {
-        gotoxy(getXPos(tail), getYPos(tail));
+    int i = 0;
 
+    while(i <= 1) {
+        gotoxy(getXPos(snake->head) + i, getYPos(snake->head));
         if(snake->player == 1) {
-            setBackgroundColor(COLOR_RED);
+                setBackgroundColor(COLOR_RED);
         }else {
             setBackgroundColor(COLOR_GREEN);
         }
+
         printf(" ");
 
-        gotoxy(getXPos(tail) + 1, getYPos(tail));
-
-        if(snake->player == 1) {
-            setBackgroundColor(COLOR_RED);
-        }else {
-            setBackgroundColor(COLOR_GREEN);
-        }
-        printf(" ");
+        i++;
     }
-        gotoxy(getXPos(snake->head), getYPos(snake->head));
+
+    i = 0;
+
+    while(i <= 1) {
+        gotoxy(getXPos(getTail(snake)) + i, getYPos(getTail(snake)));
         if(snake->player == 1) {
-            setBackgroundColor(COLOR_RED);
+                setBackgroundColor(COLOR_RED);
         }else {
             setBackgroundColor(COLOR_GREEN);
         }
+
         printf(" ");
 
-        gotoxy(getXPos(snake->head) + 1, getYPos(snake->head));
-        if(snake->player == 1) {
-            setBackgroundColor(COLOR_RED);
-        }else {
-            setBackgroundColor(COLOR_GREEN);
-        }
-        printf(" ");
+        i++;
+    }
+
+
 }
 
 void releaseSnake(Snake* snake) {
@@ -78,22 +76,58 @@ void releaseSnake(Snake* snake) {
 
 }
 
-bool checkColision(Snake* snake, int width, int height) {
-        if (getXPos(snake->head) + getXDir(snake->direction) >= (width * OFFSETX) -1 || getXPos(snake->head) + getXDir(snake->direction) < 2) {
-        gotoxy(20, 20);
-        printf("aqui 1");
+void deleteSnake(Snake* snake) {
+    Position* pos = getTail(snake);
+    Position* prev;
+
+    while(pos != NULL) {
+        prev = pos;
+        pos = getNextPos(pos);
+        free(pos);
+    }
+}
+
+bool checkColision(Snake* snake, int width, int height, int opt) {
+    if (getXPos(snake->head) + getXDir(snake->direction) >= (width * OFFSETX) - 1 || getXPos(snake->head) + getXDir(snake->direction) < 2) {
+        if(snake->player == 1){
+            printMessage(width, height, "Player 1 colidiu contra a parede.", COLOR_BLUE);
+            if(opt != 1) {
+                printWins(width * 2 + 28, 15);
+            }
+
+        } else {
+            printMessage(width, height, "Player 2 colidiu contra a parede.", COLOR_BLUE);
+            printWins(width * 2 + 26, 5);
+        }
+
         return true;
     } else if (getYPos(snake->head) + getYDir(snake->direction) == height || getYPos(snake->head) + getYDir(snake->direction) == 0) {
-        gotoxy(20, 20);
-        printf("aqui 2");
+        if(snake->player == 1){
+            printMessage(width, height, "Player 1 colidiu contra a parede.", COLOR_BLUE);
+            if(opt != 1) {
+                printWins(width * 2 + 28, 15);
+            }
+        } else {
+            printMessage(width, height, "Player 2 colidiu contra a parede.", COLOR_BLUE);
+            printWins(width * 2 + 26, 5);
+        }
+
         return true;
     } else if (getXDir(snake->direction) == 0 && getYDir(snake->direction) == 0) {
         return false;
     } else {
-        for (Position* tail = snake->tail; getProxPos(tail) != NULL; tail = getProxPos(tail)) {
+        for (Position* tail = snake->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
             if (getXPos(snake->head) == getXPos(tail) && getYPos(snake->head) == getYPos(tail)) {
-                gotoxy(20, 20);
-                printf("aqui 3");
+                if(snake->player == 1){
+                    printMessage(width, height, "Player 1 colidiu consigo mesmo.", COLOR_BLUE);
+                    if(opt != 1) {
+                        printWins(width * 2 + 28, 15);
+                    }
+                } else {
+                    printMessage(width, height, "Player 2 colidiu consigo mesmo.", COLOR_BLUE);
+                    printWins(width * 2 + 26, 5);
+                }
+
                 return true;
             }
         }
@@ -101,27 +135,44 @@ bool checkColision(Snake* snake, int width, int height) {
     return false;
 }
 
-bool checkPlayersColision(Snake* player1, Snake* player2) {
-    for(Position* tail = player1->tail; getProxPos(tail) != NULL; tail = getProxPos(tail)) {
+bool checkPlayersColision(Snake* player1, Snake* player2, int width, int height, int applesP1, int applesP2) {
+    for(Position* tail = player1->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
         if(getXPos(player2->head) == getXPos(tail) && getYPos(player2->head) == getYPos(tail)) {
+
+            printMessage(width, height, "Player 2 morreu.", COLOR_BLUE);
+            printWins(width * 2 + 26, 5);
+
+
             return true;
         }
     }
-    for(Position* tail = player2->tail; getProxPos(tail) != NULL; tail = getProxPos(tail)) {
+    for(Position* tail = player2->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
         if(getXPos(player1->head) == getXPos(tail) && getYPos(player1->head) == getYPos(tail)) {
+                printMessage(width, height, "Player 1 morreu.", COLOR_BLUE);
+                printWins(width * 2 + 28, 15);
             return true;
         }
     }
     if(getXPos(player2->head) == getXPos(player1->head) && getYPos(player2->head) == getYPos(player1->head)) {
+                if(applesP1 > applesP2) {
+                    printMessage(width, height, "Player 2 morreu!.", COLOR_BLUE);
+                    printWins(width * 2 + 26, 5);
+                } else if(applesP1 < applesP2) {
+                    printMessage(width, height, "Player 1 morreu.", COLOR_BLUE);
+                    printWins(width * 2 + 28, 15);
+                } else {
+                    printMessage(width, height, "Player 1 e Player 2 morreram.", COLOR_BLUE);
+                }
+
         return true;
     }
     return false;
 }
 
 void updateBody(Snake* snake) {
-    for (Position* tail = snake->tail; getProxPos(tail) != NULL; tail = getProxPos(tail)) {
-        insertXPos(tail, getXPos(getProxPos(tail)));
-        insertYPos(tail, getYPos(getProxPos(tail)));
+    for (Position* tail = snake->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
+        insertXPos(tail, getXPos(getNextPos(tail)));
+        insertYPos(tail, getYPos(getNextPos(tail)));
     }
 
     int resultX = getXPos(snake->head) + (getXDir(snake->direction)*2);
@@ -211,6 +262,7 @@ void snakeFeed(Snake* snake) {
 
     Position* newTail = createPosition(resultX, resultY);
 
-    insertProxPos(newTail, snake->tail);
+    insertNextPos(newTail, snake->tail);
     snake->tail = newTail;
 }
+

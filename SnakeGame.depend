@@ -1,20 +1,22 @@
 # depslib dependency file v1.0
-1600127641 source:c:\users\israel\documents\game\snake\snakegame\main.c
+1600572260 source:c:\users\israel\documents\game\snake\snakegame\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	<unistd.h>
+	<windows.h>
 	"console.h"
 	"map.h"
 	"snake.h"
 	"apple.h"
+	"printer.h"
 
-1599858570 c:\users\israel\documents\game\snake\snakegame\console.h
+1600401655 c:\users\israel\documents\game\snake\snakegame\console.h
 	<stdbool.h>
 
 1599754552 source:c:\users\israel\documents\game\snake\snakegame\console.h
 
-1599845507 source:c:\users\israel\documents\game\snake\snakegame\console.c
+1600401658 source:c:\users\israel\documents\game\snake\snakegame\console.c
 	<windows.h>
 	<direct.h>
 	<stdbool.h>
@@ -28,19 +30,20 @@
 
 1599789758 c:\users\israel\documents\game\snake\snakegame\direction.h
 
-1600124549 c:\users\israel\documents\game\snake\snakegame\snake.h
+1600572246 c:\users\israel\documents\game\snake\snakegame\snake.h
 	"position.h"
 
-1600127802 source:c:\users\israel\documents\game\snake\snakegame\snake.c
+1600572336 source:c:\users\israel\documents\game\snake\snakegame\snake.c
 	<stdio.h>
 	<stdlib.h>
+	<time.h>
 	<stdbool.h>
 	"snake.h"
+	"apple.h"
 	"direction.h"
-	"position.h"
 	"console.h"
 
-1600125921 source:c:\users\israel\documents\game\snake\snakegame\apple.c
+1600572030 source:c:\users\israel\documents\game\snake\snakegame\apple.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -50,22 +53,31 @@
 	"console.h"
 	"snake.h"
 
-1600124540 c:\users\israel\documents\game\snake\snakegame\apple.h
+1600566148 c:\users\israel\documents\game\snake\snakegame\apple.h
 	"snake.h"
 
-1599826045 c:\users\israel\documents\game\snake\snakegame\position.h
+1600565655 c:\users\israel\documents\game\snake\snakegame\position.h
 
-1599826195 source:c:\users\israel\documents\game\snake\snakegame\position.c
+1600565624 source:c:\users\israel\documents\game\snake\snakegame\position.c
 	<stdio.h>
 	<stdlib.h>
 	"position.h"
 	"console.h"
 
-1599828390 source:c:\users\israel\documents\game\snake\snakegame\map.c
+1600572047 source:c:\users\israel\documents\game\snake\snakegame\map.c
 	<stdio.h>
 	<stdlib.h>
+	<unistd.h>
 	"map.h"
 	"console.h"
 
 1599781072 c:\users\israel\documents\game\snake\snakegame\map.h
+
+1600568312 c:\users\israel\documents\game\snake\snakegame\printer.h
+
+1600569049 source:c:\users\israel\documents\game\snake\snakegame\printer.c
+	<stdio.h>
+	<stdlib.h>
+	"printer.h"
+	"console.h"
 

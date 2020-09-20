@@ -5,15 +5,15 @@
 
 struct position {
   int xPos, yPos;
-  struct position* prox;
+  struct position* next;
 };
 
 Position* createPosition(int xPos, int yPos) {
   Position* pos = (Position*) malloc(sizeof(Position));
   pos->xPos = xPos;
   pos->yPos = yPos;
-  pos->prox = (Position*) malloc(sizeof(Position));
-  pos->prox = NULL;
+  pos->next = (Position*) malloc(sizeof(Position));
+  pos->next = NULL;
   return pos;
 }
 
@@ -25,12 +25,12 @@ void insertYPos(Position* pos, int yPos) {
     pos->yPos = yPos;
 }
 
-void insertProxPos(Position* pos, Position* prox) {
-    pos->prox = prox;
+void insertNextPos(Position* pos, Position* next) {
+    pos->next = next;
 }
 
-Position* getProxPos(Position* pos) {
-    return pos->prox;
+Position* getNextPos(Position* pos) {
+    return pos->next;
 }
 
 int getXPos(Position* pos) {

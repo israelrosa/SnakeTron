@@ -6,9 +6,9 @@ void insertXPos(Position* pos, int xPos);
 
 void insertYPos(Position* pos, int yPos);
 
-void insertProxPos(Position* pos, Position* prox);
+void insertNextPos(Position* pos, Position* next);
 
-Position* getProxPos(Position* pos);
+Position* getNextPos(Position* pos);
 
 int getXPos(Position* pos);
 

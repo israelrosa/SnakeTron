@@ -54,6 +54,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="position.h" />
+		<Unit filename="printer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="printer.h" />
 		<Unit filename="snake.c">
 			<Option compilerVar="CC" />
 		</Unit>

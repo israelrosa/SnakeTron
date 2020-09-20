@@ -56,3 +56,5 @@ void hideCursor(bool hide);
 // Define a janela para o tamanho máximo
 void maximizeWindow();
 
+void getSizeWindow(int *width, int *heigth);
+

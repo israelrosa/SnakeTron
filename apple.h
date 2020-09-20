@@ -13,3 +13,5 @@ void releaseApple();
 bool checkPosition(Apple* apple, Snake* snake, int width, int height);
 
 bool checkIfAteApple(Apple * apple, Snake* snake);
+
+void deleteApple(Apple* apple);
