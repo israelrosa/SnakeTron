@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <windows.h>
 #include "apple.h"
 #include "position.h"
 #include "console.h"
@@ -74,6 +75,7 @@ bool checkPosition(Apple* apple, Snake* snake, int width, int heigth) {
 
 bool checkIfAteApple(Apple* apple, Snake* snake) {
   if (getXPos(apple->pos) == getXPos(getHead(snake)) && getYPos(apple->pos) == getYPos(getHead(snake))) {
+    Beep(800, 50);
     return true;
   } else {
     return false;

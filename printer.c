@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "printer.h"
 #include "console.h"
 
@@ -75,6 +76,8 @@ void printCoop(int initialXPos, int initialYPos, int opt){
 
 void printGameOver(int initialXPos, int initialYPos) {
     int color = COLOR_LIGHTMAGENTA;
+    PlaySound(TEXT("game-over.wav"), NULL, SND_ASYNC);
+    Sleep(10);
     //Letra G
         printVerticalLine(initialXPos, initialYPos, initialYPos + 4, color);
         printVerticalLine(initialXPos + 4, initialYPos + 2, initialYPos + 4, color);

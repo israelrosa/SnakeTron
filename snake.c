@@ -139,7 +139,7 @@ bool checkPlayersColision(Snake* player1, Snake* player2, int width, int height,
     for(Position* tail = player1->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
         if(getXPos(player2->head) == getXPos(tail) && getYPos(player2->head) == getYPos(tail)) {
 
-            printMessage(width, height, "Player 2 morreu.", COLOR_BLUE);
+            printMessage(width, height, "Player 2 morreu!", COLOR_BLUE);
             printWins(width * 2 + 26, 5);
 
 
@@ -148,17 +148,17 @@ bool checkPlayersColision(Snake* player1, Snake* player2, int width, int height,
     }
     for(Position* tail = player2->tail; getNextPos(tail) != NULL; tail = getNextPos(tail)) {
         if(getXPos(player1->head) == getXPos(tail) && getYPos(player1->head) == getYPos(tail)) {
-                printMessage(width, height, "Player 1 morreu.", COLOR_BLUE);
+                printMessage(width, height, "Player 1 morreu!", COLOR_BLUE);
                 printWins(width * 2 + 28, 15);
             return true;
         }
     }
     if(getXPos(player2->head) == getXPos(player1->head) && getYPos(player2->head) == getYPos(player1->head)) {
                 if(applesP1 > applesP2) {
-                    printMessage(width, height, "Player 2 morreu!.", COLOR_BLUE);
+                    printMessage(width, height, "Player 2 morreu!", COLOR_BLUE);
                     printWins(width * 2 + 26, 5);
                 } else if(applesP1 < applesP2) {
-                    printMessage(width, height, "Player 1 morreu.", COLOR_BLUE);
+                    printMessage(width, height, "Player 1 morreu!", COLOR_BLUE);
                     printWins(width * 2 + 28, 15);
                 } else {
                     printMessage(width, height, "Player 1 e Player 2 morreram.", COLOR_BLUE);

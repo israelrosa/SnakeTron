@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <windows.h>
+#include <windowsx.h>
 #include "console.h"
 #include "map.h"
 #include "snake.h"
@@ -100,6 +101,9 @@ void play(int opt) {
     Apple* apple = createApple();
     printMap(borderx, bordery);
 
+    PlaySound(TEXT("play.wav"), NULL, SND_LOOP | SND_ASYNC);
+    Sleep(10);
+
     int key = getch();
     int key2 = true;
     appleGenerate(apple, player1, player2);
@@ -181,7 +185,8 @@ void menu() {
 
         int opt = 0;
         int select = 1;
-       do {
+        int sound = 0;
+        do {
             printHorizontalLine(0, sizeY/4 - 10, sizeX -1, 0, COLOR_BLUE );
             gotoxy(sizeX / 2 - 11, sizeY/4 - 8);
             setBackgroundColor(COLOR_BLACK);
@@ -193,19 +198,31 @@ void menu() {
             gotoxy(1, 1);
             int key;
             hideCursor(true);
+
+            if(sound == 0) {
+                PlaySound(TEXT("intro.wav"), NULL, SND_LOOP | SND_ASYNC);
+                Sleep(10);
+                sound = 1;
+            }
+
+
             key = getch();
 
             if(key == TECLA_SETAS) {
                 key = getch();
                 switch(key) {
                     case TECLA_CIMA:
+                        Beep(800, 100);
                         select = 1;
                         break;
                     case TECLA_BAIXO:
+                        Beep(800, 100);
                         select = 2;
                         break;
                 }
             } else if(key == TECLA_ENTER) {
+                PlaySound(TEXT("select.wav"), NULL, SND_ASYNC);
+                Sleep(1000);
                 opt = select;
             }
         } while (opt == 0);

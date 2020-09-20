@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <windows.h>
 #include "map.h"
 #include "console.h"
 
 void printMap(int width, int height) {
     width *= 2;
+    PlaySound(TEXT("walls.wav"), NULL, SND_LOOP | SND_ASYNC);
+    Sleep(10);
     for (int i=0; i<= width; i++) {
         gotoxy(i, 0);
         setBackgroundColor(COLOR_BLUE);
@@ -28,4 +31,5 @@ void printMap(int width, int height) {
         }
         usleep(5000);
     }
+    PlaySound(NULL, 0, SND_SYNC);
 }

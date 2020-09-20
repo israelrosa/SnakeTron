@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1600572260 source:c:\users\israel\documents\game\snake\snakegame\main.c
+1600637598 source:c:\users\israel\documents\game\snake\snakegame\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	<unistd.h>
 	<windows.h>
+	<windowsx.h>
 	"console.h"
 	"map.h"
 	"snake.h"
@@ -33,7 +34,7 @@
 1600572246 c:\users\israel\documents\game\snake\snakegame\snake.h
 	"position.h"
 
-1600572336 source:c:\users\israel\documents\game\snake\snakegame\snake.c
+1600572785 source:c:\users\israel\documents\game\snake\snakegame\snake.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -43,11 +44,12 @@
 	"direction.h"
 	"console.h"
 
-1600572030 source:c:\users\israel\documents\game\snake\snakegame\apple.c
+1600636490 source:c:\users\israel\documents\game\snake\snakegame\apple.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<stdbool.h>
+	<windows.h>
 	"apple.h"
 	"position.h"
 	"console.h"
@@ -64,10 +66,11 @@
 	"position.h"
 	"console.h"
 
-1600572047 source:c:\users\israel\documents\game\snake\snakegame\map.c
+1600637388 source:c:\users\israel\documents\game\snake\snakegame\map.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
+	<windows.h>
 	"map.h"
 	"console.h"
 
@@ -75,9 +78,10 @@
 
 1600568312 c:\users\israel\documents\game\snake\snakegame\printer.h
 
-1600569049 source:c:\users\israel\documents\game\snake\snakegame\printer.c
+1600635945 source:c:\users\israel\documents\game\snake\snakegame\printer.c
 	<stdio.h>
 	<stdlib.h>
+	<windows.h>
 	"printer.h"
 	"console.h"
 
