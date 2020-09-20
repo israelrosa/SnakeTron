@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1600637598 source:c:\users\israel\documents\game\snake\snakegame\main.c
+1600638559 source:c:\users\israel\documents\game\snake\snakegame\main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
@@ -34,7 +34,7 @@
 1600572246 c:\users\israel\documents\game\snake\snakegame\snake.h
 	"position.h"
 
-1600572785 source:c:\users\israel\documents\game\snake\snakegame\snake.c
+1600639526 source:c:\users\israel\documents\game\snake\snakegame\snake.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -43,6 +43,7 @@
 	"apple.h"
 	"direction.h"
 	"console.h"
+	"printer.h"
 
 1600636490 source:c:\users\israel\documents\game\snake\snakegame\apple.c
 	<stdio.h>

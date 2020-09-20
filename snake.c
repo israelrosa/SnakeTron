@@ -6,6 +6,7 @@
 #include "apple.h"
 #include "direction.h"
 #include "console.h"
+#include "printer.h"
 
 struct snake {
     Position* head;
